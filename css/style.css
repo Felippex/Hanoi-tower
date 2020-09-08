@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  font-size: 0;
+  margin: 20px auto;
+}
+
+.stick {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border: 1px solid red;
+}
+
+.row {
+  height: 20%;
+  border-bottom: 1px solid green;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.row5 {
+  border-bottom: none;
+}
+
+p {
+  width: 100%;
+  background-color: red;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 8%;
+}
+
+.circle4 {
+  width: 90%;
+}
+
+.circle3 {
+  width: 80%;
+}
+
+.circle2 {
+  width: 70%;
+}
+
+.circle1 {
+  width: 60%;
+}
