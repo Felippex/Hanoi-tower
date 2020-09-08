@@ -13,31 +13,29 @@
 }
 
 .stick {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-content: flex-end;
+  flex-wrap: wrap;
   width: 200px;
   height: 200px;
   background-color: white;
-  border: 1px solid red;
+  border: 2px solid blue;
 }
 
-.row {
-  height: 20%;
-  border-bottom: 1px solid green;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-}
-
-.row5 {
-  border-bottom: none;
-}
 
 p {
   width: 100%;
+  height: 20%;
   background-color: red;
+  border: 1px solid black;
   font-size: 20px;
   text-align: center;
   border-radius: 8%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .circle4 {
@@ -54,4 +52,8 @@ p {
 
 .circle1 {
   width: 60%;
+}
+
+.invisible {
+  display: none;
 }
