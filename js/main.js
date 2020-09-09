@@ -1,7 +1,7 @@
 const rings = document.querySelectorAll('.circle')
 const emptyPlaces = document.querySelectorAll('.stick')
-
-const firstRing = document.querySelector('.circle1');
+const counterSpan = document.querySelector('.counter span')
+let movementsNumber = 0;
 
 rings.forEach(ring => {
   ring.addEventListener('dragstart', () => {
@@ -20,12 +20,19 @@ emptyPlaces.forEach(emptyPlace => {
       e.preventDefault()
     })
   emptyPlace.addEventListener('drop', () => {
+
     const ring = document.querySelector('.dragging')
     if ((emptyPlace.childElementCount > 0) && (ring.id > emptyPlace.children[0].id)) {
-      return alert('niedozwolony ruch')
+      return alert('Movement forbidden!')
     }
     emptyPlace.prepend(ring)
-
+    movementsNumber++;
+    counterSpan.textContent = movementsNumber;
+    if (emptyPlaces[2].childElementCount === 5) {
+      rings.forEach(ring => ring.draggable = false)
+      alert('Good job! You win!')
+      return false
+    }
     rings.forEach(ring => {
       if (ring.previousElementSibling) {
         ring.draggable = false
@@ -33,9 +40,6 @@ emptyPlaces.forEach(emptyPlace => {
         ring.draggable = true
       }
     })
-    if (emptyPlace.children.length > 1) {
-
-    }
   })
 
 

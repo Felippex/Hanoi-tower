@@ -5,20 +5,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hanoi Tower</title>
+  <link
+    href="https://fonts.googleapis.com/css?family=Saira+Condensed:400,700|Saira:300,400&display=swap&subset=latin-ext"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
   <div class="container">
-    <div class="stick one">
-      <p class="circle circle1" id="1" draggable="true">1</p>
-      <p class="circle circle2" id="2">2</p>
-      <p class="circle circle3" id="3">3</p>
-      <p class="circle circle4" id="4">4</p>
-      <p class="circle circle5" id="5">5</p>
-    </div>
-    <div class="stick two"> </div>
-    <div class="stick three"> </div>
+    <header>
+      <h1>Hanoi Tower</h1>
+      <p class="description-first-par">Below you can find the Hanoi Tower.</p>
+      <p class="description-second-par">Your task is to move all rings to the third stick. But there are some rules:</p>
+      <ol class="restrictions">
+        <li>You can take only one ring in one movement</li>
+        <li>You can take ring only from the top of the pile</li>
+        <li>You cannot put ring with bigger diameter on ring with smaller diameter</li>
+      </ol>
+    </header>
+    <section class="tower">
+      <div class="stick one">
+        <p class="circle circle1" id="1" draggable="true">1</p>
+        <p class="circle circle2" id="2">2</p>
+        <p class="circle circle3" id="3">3</p>
+        <p class="circle circle4" id="4">4</p>
+        <p class="circle circle5" id="5">5</p>
+      </div>
+      <div class="stick two"> </div>
+      <div class="stick three"> </div>
+    </section>
+    <section class="counter">
+      <p class="counterText">Number of made movements: <span class="movements">0</span></p>
+    </section>
   </div>
   <script src="js/main.js"></script>
 </body>
