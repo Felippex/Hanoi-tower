@@ -18,9 +18,9 @@
       <p class="description-first-par">Below you can find the Hanoi Tower.</p>
       <p class="description-second-par">Your task is to move all rings to the third stick. But there are some rules:</p>
       <ol class="restrictions">
-        <li>You can take only one ring in one movement</li>
-        <li>You can take ring only from the top of the pile</li>
-        <li>You cannot put ring with bigger diameter on ring with smaller diameter</li>
+        <li>You can take only one ring in one movement.</li>
+        <li>You can take ring only from the top of the pile.</li>
+        <li>You cannot put ring with bigger diameter on ring with smaller diameter.</li>
       </ol>
     </header>
     <section class="tower">
@@ -34,9 +34,22 @@
       <div class="stick two"> </div>
       <div class="stick three"> </div>
     </section>
-    <section class="counter">
+    <div class="counter">
       <p class="counterText">Number of made movements: <span class="movements">0</span></p>
-    </section>
+    </div>
+    <div class="actionButtons">
+      <button class="reset">Reset game</button>
+      <div class="ringSelector">
+        <label for="ringSelection">Choose a number of rings:</label>
+        <select class="ringSelection" name="rings" id="rings">
+          <option value="three">3</option>
+          <option value="four">4</option>
+          <option selected value="five">5</option>
+          <option value="six">6</option>
+          <option value="seven">7</option>
+          <option value="eight">8</option>
+        </select></div>
+    </div>
   </div>
   <script src="js/main.js"></script>
 </body>

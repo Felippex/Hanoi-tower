@@ -22,12 +22,15 @@ emptyPlaces.forEach(emptyPlace => {
   emptyPlace.addEventListener('drop', () => {
 
     const ring = document.querySelector('.dragging')
+    const childrenNumber = emptyPlace.childElementCount // number of rings on one stick
     if ((emptyPlace.childElementCount > 0) && (ring.id > emptyPlace.children[0].id)) {
       return alert('Movement forbidden!')
     }
     emptyPlace.prepend(ring)
-    movementsNumber++;
-    counterSpan.textContent = movementsNumber;
+    if (emptyPlace.childElementCount !== childrenNumber) {
+      movementsNumber++; // condition which prevents from increasing number of movements if user do not move ring on another stick
+      counterSpan.textContent = movementsNumber;
+    }
     if (emptyPlaces[2].childElementCount === 5) {
       rings.forEach(ring => ring.draggable = false)
       alert('Good job! You win!')
