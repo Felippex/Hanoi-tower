@@ -1,7 +1,9 @@
 const rings = document.querySelectorAll('.circle')
 const emptyPlaces = document.querySelectorAll('.stick')
 const counterSpan = document.querySelector('.counter span')
+const resetBtn = document.querySelector('.reset')
 let movementsNumber = 0;
+let numberOfRingsGlobal = 5;
 
 rings.forEach(ring => {
   ring.addEventListener('dragstart', () => {
@@ -31,7 +33,7 @@ emptyPlaces.forEach(emptyPlace => {
       movementsNumber++; // condition which prevents from increasing number of movements if user do not move ring on another stick
       counterSpan.textContent = movementsNumber;
     }
-    if (emptyPlaces[2].childElementCount === 5) {
+    if (emptyPlaces[2].childElementCount === numberOfRingsGlobal) {
       rings.forEach(ring => ring.draggable = false)
       alert('Good job! You win!')
       return false
@@ -47,3 +49,32 @@ emptyPlaces.forEach(emptyPlace => {
 
 
 })
+
+//reset function
+const resetGame = () => {
+  rings.forEach(ring => {
+    emptyPlaces[0].append(ring)
+  })
+  rings[0].draggable = 'true'
+  counterSpan.textContent = 0;
+  movementsNumber = 0;
+  //reset to default number of rings 
+}
+resetBtn.addEventListener('click', resetGame)
+
+// select number of rings
+const changeNumberOfRings = () => {
+  let numberOfRings = parseInt(document.querySelector('.ringSelection').value)
+  console.log(numberOfRings, numberOfRingsGlobal);
+  for (let i = 0; i < numberOfRings; i++) {
+    emptyPlaces[0].appendChild(rings[i])
+  }
+  for (let i = 0; i < (numberOfRingsGlobal - numberOfRings); i++) {
+    emptyPlaces[0].removeChild(rings[numberOfRings + i])
+  }
+  numberOfRingsGlobal = numberOfRings;
+}
+
+
+const ringSelection = document.querySelector('.ringSelection');
+ringSelection.addEventListener('change', changeNumberOfRings)
