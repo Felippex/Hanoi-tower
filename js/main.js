@@ -3,7 +3,7 @@ const emptyPlaces = document.querySelectorAll('.stick')
 const counterSpan = document.querySelector('.counter span')
 const resetBtn = document.querySelector('.reset')
 let movementsNumber = 0;
-let numberOfRingsGlobal = 5;
+let numberOfRingsGlobal = 6;
 
 rings.forEach(ring => {
   ring.addEventListener('dragstart', () => {
@@ -36,6 +36,7 @@ emptyPlaces.forEach(emptyPlace => {
     if (emptyPlaces[2].childElementCount === numberOfRingsGlobal) {
       rings.forEach(ring => ring.draggable = false)
       alert('Good job! You win!')
+      rings.forEach(ring => ring.style.backgroundColor = "green")
       return false
     }
     rings.forEach(ring => {
@@ -58,7 +59,9 @@ const resetGame = () => {
   rings[0].draggable = 'true'
   counterSpan.textContent = 0;
   movementsNumber = 0;
-  //reset to default number of rings 
+  numberOfRingsGlobal = 6;
+  rings.forEach(ring => ring.style.backgroundColor = "red")
+  document.getElementById('rings').value = "6";
 }
 resetBtn.addEventListener('click', resetGame)
 
