@@ -1,9 +1,11 @@
-const rings = document.querySelectorAll('.circle')
-const emptyPlaces = document.querySelectorAll('.stick')
-const counterSpan = document.querySelector('.counter span')
-const resetBtn = document.querySelector('.reset')
+const rings = document.querySelectorAll('.circle');
+const emptyPlaces = document.querySelectorAll('.stick');
+const counterSpan = document.querySelector('.counter span');
+const resetBtn = document.querySelector('.reset');
+const winningInfo = document.querySelector('.winInfo');
+const ringSelection = document.querySelector('.ringSelection');
 let movementsNumber = 0;
-let numberOfRingsGlobal = 6;
+let numberOfRingsGlobal = rings.length;
 
 rings.forEach(ring => {
   ring.addEventListener('dragstart', () => {
@@ -35,7 +37,7 @@ emptyPlaces.forEach(emptyPlace => {
     }
     if (emptyPlaces[2].childElementCount === numberOfRingsGlobal) {
       rings.forEach(ring => ring.draggable = false)
-      alert('Good job! You win!')
+      winningInfo.style.opacity = "1"
       rings.forEach(ring => ring.style.backgroundColor = "green")
       return false
     }
@@ -59,16 +61,15 @@ const resetGame = () => {
   rings[0].draggable = 'true'
   counterSpan.textContent = 0;
   movementsNumber = 0;
-  numberOfRingsGlobal = 6;
+  numberOfRingsGlobal = rings.length;
   rings.forEach(ring => ring.style.backgroundColor = "red")
-  document.getElementById('rings').value = "6";
+  ringSelection.value = "6";
+  winningInfo.style.opacity = '0'
 }
-resetBtn.addEventListener('click', resetGame)
 
 // select number of rings
 const changeNumberOfRings = () => {
   let numberOfRings = parseInt(document.querySelector('.ringSelection').value)
-  console.log(numberOfRings, numberOfRingsGlobal);
   for (let i = 0; i < numberOfRings; i++) {
     emptyPlaces[0].appendChild(rings[i])
   }
@@ -76,8 +77,10 @@ const changeNumberOfRings = () => {
     emptyPlaces[0].removeChild(rings[numberOfRings + i])
   }
   numberOfRingsGlobal = numberOfRings;
+  movementsNumber = 0;
+  counterSpan.textContent = 0;
 }
 
 
-const ringSelection = document.querySelector('.ringSelection');
+resetBtn.addEventListener('click', resetGame)
 ringSelection.addEventListener('change', changeNumberOfRings)
