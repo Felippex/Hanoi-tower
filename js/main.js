@@ -58,13 +58,16 @@ const resetGame = () => {
   rings.forEach(ring => {
     emptyPlaces[0].append(ring)
   })
-  rings[0].draggable = 'true'
+  rings[0].draggable = true;
+  for (let i = 1; i < emptyPlaces[0].childElementCount; i++) {
+    rings[i].draggable = false;
+  }
   counterSpan.textContent = 0;
   movementsNumber = 0;
   numberOfRingsGlobal = rings.length;
   rings.forEach(ring => ring.style.backgroundColor = "red")
   ringSelection.value = "6";
-  winningInfo.style.opacity = '0'
+  winningInfo.style.opacity = '0';
 }
 
 // select number of rings
@@ -80,7 +83,6 @@ const changeNumberOfRings = () => {
   movementsNumber = 0;
   counterSpan.textContent = 0;
 }
-
 
 resetBtn.addEventListener('click', resetGame)
 ringSelection.addEventListener('change', changeNumberOfRings)
