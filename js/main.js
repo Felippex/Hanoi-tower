@@ -49,8 +49,6 @@ emptyPlaces.forEach(emptyPlace => {
       }
     })
   })
-
-
 })
 
 //reset function
@@ -58,15 +56,16 @@ const resetGame = () => {
   rings.forEach(ring => {
     emptyPlaces[0].append(ring)
   })
+  for (let i = rings.length; i > ringSelection.value; i--) {
+    emptyPlaces[0].removeChild(rings[i - 1])
+  }
   rings[0].draggable = true;
   for (let i = 1; i < emptyPlaces[0].childElementCount; i++) {
     rings[i].draggable = false;
   }
   counterSpan.textContent = 0;
   movementsNumber = 0;
-  numberOfRingsGlobal = rings.length;
   rings.forEach(ring => ring.style.backgroundColor = "red")
-  ringSelection.value = "6";
   winningInfo.style.opacity = '0';
 }
 
