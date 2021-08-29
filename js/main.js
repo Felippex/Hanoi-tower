@@ -6,7 +6,6 @@ const winningInfo = document.querySelector('.winInfo');
 const ringSelection = document.querySelector('.ringSelection');
 let movementsNumber = 0;
 let numberOfRingsGlobal = rings.length;
-
 rings.forEach(ring => {
   ring.addEventListener('dragstart', () => {
     ring.classList.add('dragging');
@@ -35,6 +34,9 @@ emptyPlaces.forEach(emptyPlace => {
       movementsNumber++; // condition which prevents from increasing number of movements if user do not move ring on another stick
       counterSpan.textContent = movementsNumber;
     }
+    if (movementsNumber !== 0) {
+      ringSelection.disabled = true;
+    }
     if (emptyPlaces[2].childElementCount === numberOfRingsGlobal) {
       rings.forEach(ring => ring.draggable = false)
       winningInfo.style.opacity = "1"
@@ -42,11 +44,7 @@ emptyPlaces.forEach(emptyPlace => {
       return false
     }
     rings.forEach(ring => {
-      if (ring.previousElementSibling) {
-        ring.draggable = false
-      } else {
-        ring.draggable = true
-      }
+      ring.previousElementSibling ? ring.draggable = false : ring.draggable = true;
     })
   })
 })
@@ -67,6 +65,7 @@ const resetGame = () => {
   movementsNumber = 0;
   rings.forEach(ring => ring.style.backgroundColor = "red")
   winningInfo.style.opacity = '0';
+  ringSelection.disabled = false;
 }
 
 // select number of rings
